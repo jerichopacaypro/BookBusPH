@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/host.css">
+    <title>BookBusPH</title>
+</head>
+<body>
+<nav class="black">
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
+</nav>
+<ul id="slide-out" class="sidenav sidenav-fixed black">
+    <li>
+        <div class="user-view">
+            <div class="background">
+                <img src="/images/sidenavbg3.jpg">
+            </div>
+            <a href="#user"><img src="" id="profilepic" class="circle hide"><i class="material-icons circle large white-text hide" id="profilepicicon"></i></a><br>
+            <a href="#name"><span class="white-text" id="profilefullname"></span></a>
+            <a href="#email"><span class="white-text" id="profileemail"></span></a>
+        </div>
+    </li>
+    <li><a href="#dashboard" class="white-text sidenav-close" id="dashbtn"><i class="material-icons white-text">dashboard</i>Dashboard</a></li>
+    <li><a href="#reservations" class="white-text sidenav-close" id="seatbtn"><i class="material-icons white-text">directions_bus</i>Reservations</a></li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a style="margin-left: 15px;" class="collapsible-header white-text">Scanner Users<i class="material-icons white-text right">arrow_drop_down</i></a>
+                <div class="collapsible-body grey darken-4">
+                    <ul>
+                        <li><div class="divider white-text"></div></li>
+                        <li><a href="#addUser" class="white-text sidenav-close" id="adduserbtn">Add User<i class="material-icons right white-text">group_add</i></a></li>
+                        <li><div class="divider white-text"></div></li>
+                        <li><a href="#manageuser" class="white-text sidenav-close" id="managebtn">Manage Users<i class="material-icons right white-text">group</i></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a style="margin-left: 15px;" class="collapsible-header white-text">Manage Buses<i class="material-icons white-text right">arrow_drop_down</i></a>
+                <div class="collapsible-body grey darken-4">
+                    <ul>
+                        <li><div class="divider white-text"></div></li>
+                        <li><a href="#addbus" class="white-text sidenav-close" id="addbusbtn">Add Bus<i class="material-icons right white-text">add_box</i></a></li>
+                        <li><div class="divider white-text"></div></li>
+                        <li><a href="#editbus" class="white-text sidenav-close" id="editbusbtn">All Buses<i class="material-icons right white-text">list</i></a></li>
+                        <li><div class="divider white-text"></div></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a style="margin-left: 15px;" class="collapsible-header white-text">Account Settings<i class="material-icons white-text right">arrow_drop_down</i></a>
+                <div class="collapsible-body grey darken-4">
+                    <ul>
+                        <li><div class="divider white-text"></div></li>
+                        <li><a href="#profile" class="white-text sidenav-close" id="profbtn">Profile<i class="material-icons right white-text">account_circle</i></a></li>
+                        <li><div class="divider white-text"></div></li>
+                        <li><a href="#resetpass" class="white-text sidenav-close" id="passbtn">Reset Password<i class="material-icons right white-text">lock</i></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li><div class="divider" class="white-text"></div></li>
+    <li><a href="#!" class="waves-effect waves-light white-text" id="logoutBtn"><i class="material-icons white-text">exit_to_app</i>Logout</a></li>
+</ul>
+
+<div class="container">
+    <div class="row">
+        <div class="col m3 l3"></div>
+        <div class="col s12 m9 l9">
+            <div class="row">
+                <div class="col s12 m12 l12" id="dashboard">
+                    <div class="card">
+                        <div class="card-content">
+                            dashboard
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 l12 hide" id="reservations">
+                    <div class="card">
+                        <div class="card-content">
+                            reservations
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 l12 hide" id="addUser">
+                    <div class="card">
+                        <div class="card-content">
+                            add user
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 l12 hide" id="manageuser">
+                    <div class="card">
+                        <div class="card-content">
+                            manage user
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 l12 hide" id="addbus">
+                    <div class="card">
+                        <div class="card-content">
+                            <h5 class="center-align"><b>Add Bus</b></h5>
+                            <hr />
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col s12 m12 l12 left-align">
+                                        <h6><b>Route</b></h6>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <input type="text" name="from" id="from" class="validate">
+                                        <label for="from">From</label>
+                                        <h6 class="red-text center-align hide" style="font-size: small;" id="errorfrm"><b>Field must not be empty!</b></h6>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <input type="text" name="to" id="to" class="validate">
+                                        <label for="to">To</label>
+                                        <h6 class="red-text center-align hide" style="font-size: small;" id="errorto"><b>Field must not be empty!</b></h6>
+                                    </div>
+                                    <div class="col s12 m12 l12 left-align">
+                                        <h6><b>Bus Details</b></h6>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <input type="text" name="busnumber" id="busnumber" class="validate">
+                                        <label for="busnumber">Bus number</label>
+                                        <h6 class="red-text center-align hide" style="font-size: small;" id="errorbusnum"><b>Field must not be empty!</b></h6>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <input type="text" name="busplate" id="busplate" class="validate">
+                                        <label for="busplate">Bus plate</label>
+                                        <h6 class="red-text center-align hide" style="font-size: small;" id="errorbusplate"><b>Field must not be empty!</b></h6>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <input type="text" name="busdeparture" id="busdeparture" class="timepicker">
+                                        <label for="busdeparture">Departure time</label>
+                                        <h6 class="red-text center-align hide" style="font-size: small;" id="errordeparture"><b>Field must not be empty!</b></h6>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <input type="number" name="seatcap" id="seatcap" class="validate">
+                                        <label for="seatcap">Seat capacity</label>
+                                        <h6 class="red-text center-align hide" style="font-size: small;" id="errorseat"><b>Field must not be empty!</b></h6>
+                                    </div>
+                                    <div class="col s12 m12 l12 left-align">
+                                        <h6><b>Personnels</b></h6>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <input type="text" name="driver" id="driver" class="validate">
+                                        <label for="driver">Bus driver</label>
+                                        <h6 class="red-text center-align hide" style="font-size: small;" id="errordriver"><b>Field must not be empty!</b></h6>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <input type="text" name="helper" id="helper" class="validate">
+                                        <label for="helper">Bus Helper</label>
+                                        <h6 class="red-text center-align hide" style="font-size: small;" id="errorhelper"><b>Field must not be empty!</b></h6>
+                                    </div>
+                                    <div class="input-field col s12 m12 l12 center-align">
+                                        <button class="btn waves-effect waves-light white-text black" id="regbus">Submit<i class="material-icons right white-text">send</i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 l12 hide" id="editbus">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <ul class="tabs black">
+                                        <li class="col s6 m6 l6 tab"><a href="#activeBuses" class="white-text">Active Bus</a></li>
+                                        <li class="col s6 m6 l6 tab"><a href="#inactiveBuses" class="white-text">Inactive Bus</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col s12 m12 l12" id="activeBuses">
+                                    <table class="striped highlight">
+                                        <thead>
+                                            <tr>
+                                                <th>Bus plate</th>
+                                                <th>Bus number</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="activeBus">
+        
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col s12 m12 l12" id="inactiveBuses">
+                                    <table class="striped highlight">
+                                        <thead>
+                                            <tr>
+                                                <th>Bus plate</th>
+                                                <th>Bus number</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="inactiveBus">
+        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 l12 hide" id="profile">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col s12 m12 l12 center-align">
+                                        <img src="" id="profilePhoto" class="circle" height="64" width="64">
+                                        <i class="material-icons large" id="profileIcon">business_center</i><br>
+                                        <a href="#!" style="font-size: small;" id="updatephotobtn"><u>Update photo</u></a>
+                                        <div class="row hide center-align" id="uploaderDiv">
+                                            <div class="input-field col s12 m12 l12">
+                                                <progress value="0" max="100" id="photouploader">0%</progress>
+                                            </div>
+                                            <div class="input-field col s12 m12 l12">
+                                                <input type="file" value="upload" id="photofilebtn">
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <p style="font-size: small;">Company name</p>
+                                        <input type="text" name="compname" id="compname" class="validate">
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <p style="font-size: small;">Email address</p>
+                                        <input type="text" name="compeadd" id="compeadd" class="validate">
+                                    </div>
+                                    <div class="input-field col s12 m12 l12">
+                                        <p style="font-size: small;">Address</p>
+                                        <input type="text" name="compadd" id="compadd" class="validate">
+                                    </div>
+                                    <div class="input-field col s12 m12 l12 center-align">
+                                        <button class="btn black waves-effect waves-light white-text" id="updateProfBtn">Update<i class="material-icons white-text right">edit</i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 l12 hide" id="resetpass">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col s12 m12 l12 left-align">
+                                        <h6><b>Reset Password</b></h6>
+                                        <hr />
+                                    </div>
+                                    <div class="input-field col s12 m12 l12">
+                                        <i class="material-icons prefix">lock_open</i>
+                                        <input type="password" name="newPass" id="newPass" class="validate">
+                                        <label for="newPass">Enter new password</label>
+                                        <h6 class="red-text center-align hide" style="font-size: small;" id="changepassmatchErr1"><b>Passwords does not match!</b></h6>
+                                    </div>
+                                    <div class="input-field col s12 m12 l12">
+                                        <i class="material-icons prefix">lock_outline</i>
+                                        <input type="password" name="conNewPass" id="conNewPass" class="validate">
+                                        <label for="conNewPass">Confirm new password</label>
+                                        <h6 class="red-text center-align hide" style="font-size: small;" id="changepassmatchErr2"><b>Passwords does not match!</b></h6>
+                                    </div>
+                                    <div class="input-field col s12 m12 l12 center-align">
+                                        <button class="btn waves-effect waves-light black white-text" id="changePassesBtn">Submit<i class="material-icons right white-text">send</i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal bottom-sheet modal-fixed-footer" id="viewBusModal">
+    <div class="modal-content">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12 left-align">
+                    <h6><b>Route</b></h6>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <p style="font-size: x-small;"><b>From</b></p>
+                    <input type="text" name="editfrom" id="editfrom" class="validate">
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <p style="font-size: x-small;"><b>To</b></p>
+                    <input type="text" name="editto" id="editto" class="validate">
+                </div>
+                <div class="col s12 m12 l12 left-align">
+                    <h6><b>Bus Details</b></h6>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <p style="font-size: x-small;"><b>Bus number</b></p>
+                    <input type="text" name="editbusnumber" id="editbusnumber" class="validate">
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <p style="font-size: x-small;"><b>Bus plate</b></p>
+                    <input type="text" name="editbusplate" id="editbusplate" class="validate">
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <p style="font-size: x-small;"><b>Departure time</b></p>
+                    <input type="text" name="editbusdeparture" id="editbusdeparture" class="timepicker">
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <p style="font-size: x-small;"><b>Seat capacity</b></p>
+                    <input type="number" name="editseatcap" id="editseatcap" class="validate">
+                </div>
+                <div class="col s12 m12 l12 left-align">
+                    <h6><b>Personnels</b></h6>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <p style="font-size: x-small;"><b>Bus driver</b></p>
+                    <input type="text" name="editdriver" id="editdriver" class="validate">
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <p style="font-size: x-small;"><b>Bus Helper</b></p>
+                    <input type="text" name="edithelper" id="edithelper" class="validate">
+                </div>
+                <div class="input-field col s12 m12 l12 center-align">
+                    <button class="btn black waves-effect waves-light">Update<i class="material-icons right white-text">edit</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="waves-effect waves-light black btn-flat" id="closeViewBusModal"><i class="material-icons white-text">close</i></a>
+      </div>
+</div>
+
+<div class="modal" id="addBusModal">
+    <div class="modal-content">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12 center-align">
+                    <i class="material-icons large green-text">verified_user</i>
+                </div>
+                <div class="col s12 m12 l12 center-align">
+                    <h5 style="font-size: small;"><b>Successfully added a new bus!</b></h5>
+                </div>
+                <br><br>
+                <div class="col s12 m12 l12 center-align">
+                    <button class="modal-close btn waves-effect waves-light black white-text">confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="verifyEmailModal">
+    <div class="modal-content">
+        <div class="container">
+            <div class="row">
+                <div class="input-field col s12 m12 l12 center-align">
+                    <i class="material-icons red-text large">email</i>
+                    <h5 class="red-text">Please verify your account</h5>
+                    <p>An email verification was sent to your email address, please click the link provided to confirm your registration.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="hostProfileModal">
+    <div class="modal-content">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12 center-align">
+                    <h6><b>Please enter company details</b></h6>
+                </div>
+                <div class="input-field col s12 m12 l12">
+                    <i class="material-icons prefix">business</i>
+                    <input type="text" name="businessname" id="businessname" class="validate">
+                    <label for="businessname">Company name</label>
+                    <h6 class="red-text hide center-align" style="font-size: small;" id="compnamemiss"><p>Company name field is required!</p></h6>
+                </div>
+                <div class="input-field col s12 m12 l12">
+                    <i class="material-icons prefix">location_on</i>
+                    <input type="text" name="businessaddress" id="businessaddress" class="validate">
+                    <label for="businessaddress">Address</label>
+                    <h6 class="red-text hide center-align" style="font-size: small;" id="compaddmiss"><p>Address field is required!</p></h6>
+                </div>
+                <div class="input-field col s12 m12 l12 center-align">
+                    <button class="btn waves-effect waves-light black" id="nextbtn">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="documentModal">
+    <div class="modal-content">
+        <div class="container">
+            <h5 class="center-align"><span>Please upload a photo of your business permit</span></h5>
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    <progress value="0" max="100" id="uploader">0%</progress>
+                </div>
+                <div class="input-field col s12 m12 l12">
+                    <input type="file" value="upload" id="filebtn">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="validateModal">
+    <div class="modal-content">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12 center-align">
+                    <i class="material-icons red-text large">warning</i>
+                </div>
+                <div class="col s12 m12 l12 center-align">
+                    <p>Please allow 2 to 3 business days for our admin to validate the requirement(s) you uploaded. Once validation is complete, you will then be able to fully utilize the features of our system. Thank you!</p>
+                </div>
+                <div class="col s12 m12 l12 center-align">
+                    <button class="waves-effect waves-light btn black" id="logoutBtn2">LOGOUT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="updateModal">
+    <div class="modal-content">
+        <div class="container">
+            <div class="row">
+                <div class="input-field col s12 m12 l12 center-align">
+                    <i class="material-icons large green-text">verified_user</i>
+                </div>
+                <div class="input-field col s12 m12 l12 center-align">
+                    <h6><b>Successfully updated!</b></h6>
+                </div>
+                <div class="input-field col s12 m12 l12 center-align">
+                    <button class="btn modal-close waves-effect waves-light black white-text">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="updatePasswordModal">
+    <div class="modal-content">
+        <div class="container">
+            <div class="row">
+                <div class="input-field col s12 m12 l12 center-align">
+                    <i class="material-icons large green-text">verified_user</i>
+                </div>
+                <div class="input-field col s12 m12 l12 center-align">
+                    <h6><b>Password successfully changed!</b></h6>
+                </div>
+                <div class="input-field col s12 m12 l12 center-align">
+                    <button class="btn modal-close waves-effect waves-light black white-text">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/scripts/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+<script src="/scripts/materialize.min.js"></script>
+<script src="/scripts/host.js"></script>
+</body>
+</html>
