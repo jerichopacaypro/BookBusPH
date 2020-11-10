@@ -11,21 +11,19 @@
 <body>
 <div class="navbar-fixed">
     <nav>
-        <div class="nav-wrapper black">
+        <div class="nav-wrapper grey darken-3">
             <a href="index.html" class="brand-logo"><img src="images/logo.png" height="45" style="margin-left: 10px; margin-top: 5px;"></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="host.html" id="hostbtn1">Host a bus</a></li>
-                <li><a href="#">Book a seat</a></li>
                 <li><a href="users/index.html" class="waves-effect waves-light white-text hide" id="accountbtn1">Profile</a></li>
                 <li><a href="#" data-target="loginModal" class="modal-trigger" id="loginbtn1">Login</a></li>
             </ul>
         </div>
     </nav>
 </div>
-<ul class="sidenav sidenav-close black" id="mobile-demo">
+<ul class="sidenav sidenav-close grey darken-3" id="mobile-demo">
     <li><a href="host.html" class="white-text" id="hostbtn2">Host a bus</a></li>
-    <li><a href="#" class="white-text">Book a seat</a></li>
     <li><a href="users/index.html" class="waves-effect waves-light white-text hide" id="accountbtn2">Profile</a></li>
     <li><a href="#" data-target="loginModal" class="modal-trigger white-text" id="loginbtn2">Login</a></li>
 </ul>
@@ -33,17 +31,99 @@
 <div class="parallax-container">
     <div class="parallax"><img src="images/bus1690x1127.jpg"></div>
 </div>
-<div class="section black">
+<div class="section grey darken-3">
     <div class="row container">
         <h2 class="header white-text">BookBusPH</h2>
-        <p class="white-text">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+        <p class="white-text">Welcome! Reserve bus seats online from BookBusPH and get a special discount if you are a student, senior citizen or a person with disabilities. Select a departure and destination city, departure date and the number of seats and click on search. This will show you the necessary details and you can book a seat. Once booked, you will then be asked to pay to complete the reservation.</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="input-field col s12 m3 l3">
+                <select name="from" id="from">
+                    <option value="" disabled selected>Select</option>
+                    <option value="Banaybanay">Banaybanay</option>
+                    <option value="Baganga">Baganga</option>
+                    <option value="Boston">Boston</option>
+                    <option value="Cateel">Cateel</option>
+                    <option value="Caraga">Caraga</option>
+                    <option value="Carmen">Carmen</option>
+                    <option value="Compostela Valley">Compostela Valley</option>
+                    <option value="Davao City">Davao City</option>
+                    <option value="Digos City">Digos City</option>
+                    <option value="Gov. Generoso">Gov. Generoso</option>
+                    <option value="Kamanlangan">Kamanlangan</option>
+                    <option value="Kapalong">Kapalong</option>
+                    <option value="Laak">Laak</option>
+                    <option value="Lupon">Lupon</option>
+                    <option value="Mabini">Mabini</option>
+                    <option value="Maco">Maco</option>
+                    <option value="Manay">Manay</option>
+                    <option value="Maragusan">Maragusan</option>
+                    <option value="Mati">Mati</option>
+                    <option value="Mawab">Mawab</option>
+                    <option value="Monkayo">Monkayo</option>
+                    <option value="Montevista">Montevista</option>
+                    <option value="Nabunturan">Nabunturan</option>
+                    <option value="New Bataan">New Bataan</option>
+                    <option value="Panabo City">Panabo City</option>
+                    <option value="Pantukan">Pantukan</option>
+                    <option value="San Isidro">San Isidro</option>
+                    <option value="Tagum City">Tagum City</option>
+                    <option value="Tarragona">Tarragona</option>
+                </select>
+                <label for="from" class="white-text">Depart from</label>
+            </div>
+            <div class="input-field col s12 m3 l3">
+                <select name="to" id="to">
+                    <option value="" disabled selected>Select</option>
+                    <option value="Banaybanay">Banaybanay</option>
+                    <option value="Baganga">Baganga</option>
+                    <option value="Boston">Boston</option>
+                    <option value="Cateel">Cateel</option>
+                    <option value="Caraga">Caraga</option>
+                    <option value="Carmen">Carmen</option>
+                    <option value="Compostela Valley">Compostela Valley</option>
+                    <option value="Davao City">Davao City</option>
+                    <option value="Digos City">Digos City</option>
+                    <option value="Gov. Generoso">Gov. Generoso</option>
+                    <option value="Kamanlangan">Kamanlangan</option>
+                    <option value="Kapalong">Kapalong</option>
+                    <option value="Laak">Laak</option>
+                    <option value="Lupon">Lupon</option>
+                    <option value="Mabini">Mabini</option>
+                    <option value="Maco">Maco</option>
+                    <option value="Manay">Manay</option>
+                    <option value="Maragusan">Maragusan</option>
+                    <option value="Mati">Mati</option>
+                    <option value="Mawab">Mawab</option>
+                    <option value="Monkayo">Monkayo</option>
+                    <option value="Montevista">Montevista</option>
+                    <option value="Nabunturan">Nabunturan</option>
+                    <option value="New Bataan">New Bataan</option>
+                    <option value="Panabo City">Panabo City</option>
+                    <option value="Pantukan">Pantukan</option>
+                    <option value="San Isidro">San Isidro</option>
+                    <option value="Tagum City">Tagum City</option>
+                    <option value="Tarragona">Tarragona</option>
+                </select>
+                <label for="to" class="white-text">Arrive to</label>
+            </div>
+            <div class="input-field col s12 m3 l3">
+                <i class="material-icons prefix">event</i>
+                <input type="text" name="bookDate" id="bookDate" class="datepicker">
+                <label for="bookDate">Select Date</label>
+            </div>
+            <div class="input-field col s12 m3 l3 center-align">
+                <button class="waves-effect waves-light grey darken-4 btn">Search<i class="material-icons white-text right">search</i></button>
+            </div>
+        </div>
     </div>
 </div>
 <div class="parallax-container">
     <div class="parallax"><img src="images/buses1690x1127.jpg"></div>
 </div>
 
-<div class="modal modal-fixed-footer" id="loginModal">
+<div class="modal modal-fixed-footer grey darken-3" id="loginModal">
     <div class="modal-content">
         <div class="center-align">
             <h5>Login</h5>
@@ -64,25 +144,25 @@
                     <h6 class="red-text center-align hide" style="font-size: small;" id="passError"><b>Password field required</b></h6>
                 </div>
                 <div class="input-field col s12 m12 l12 center-align">
-                    <button class="btn waves-effect waves-light black" id="loginBtn">Login</button>
+                    <button class="btn waves-effect waves-light grey darken-4" id="loginBtn">Login</button>
                 </div>
                 <div class="col s6 m6 l6 left align">
-                    <p>Don't have an account?</p>
+                    <p class="white-text">Don't have an account?</p>
                     <a href="#registerModal" class="modal-trigger modal-close blue-text">Register here</a>
                 </div>
                 <div class="col s6 m6 l6 right-align">
-                    <p>Forgot your password?</p>
+                    <p class="white-text">Forgot your password?</p>
                     <a href="" class="red-text">Reset password</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal-footer right-align">
-        <button class="btn-small waves-effect waves-light black modal-close"><i class="material-icons">close</i></button>
+    <div class="modal-footer grey darken-3 right-align">
+        <button class="btn-small waves-effect waves-light grey darken-4 modal-close"><i class="material-icons">close</i></button>
     </div>
 </div>
 
-<div class="modal modal-fixed-footer" id="registerModal">
+<div class="modal modal-fixed-footer grey darken-3" id="registerModal">
     <div class="modal-content">
         <div class="center-align">
             <h5>Register</h5>
@@ -111,17 +191,17 @@
                     <h6 class="red-text center-align hide" style="font-size: small;" id="regConPassError"><b>Password field required</b></h6>
                 </div>
                 <div class="input-field col s12 m12 l12 center-align">
-                    <button class="waves-effect waves-light btn black" id="registerBtn">Create Account</button>
+                    <button class="waves-effect waves-light btn grey darken-4" id="registerBtn">Create Account</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <button class="btn-small waves-effect waves-light black modal-close"><i class="material-icons">close</i></button>
+    <div class="modal-footer grey darken-3">
+        <button class="btn-small waves-effect waves-light grey darken-4 modal-close"><i class="material-icons">close</i></button>
     </div>
 </div>
 
-<div class="modal" id="loadModal">
+<div class="modal grey darken-3" id="loadModal">
     <div class="modal-content center">
         <div class="row">
             <div class="input-field col s12 m12 l12 center-align">
@@ -144,20 +224,16 @@
     </div>
 </div>
 
-<footer class="page-footer black">
+<footer class="page-footer grey darken-3">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">BookBusPH</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text"><b>BookBusPH</b></h5>
+                <img src="images/logo.png" alt="">
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
                 <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                    <li><a class="grey-text text-lighten-3" href="host.html">Host a bus</a></li>
                 </ul>
             </div>
         </div>

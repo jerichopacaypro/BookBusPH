@@ -29,10 +29,10 @@
     var pass2miss   = document.getElementById('conpassmissing2');
     var pass1miss   = document.getElementById('passmissing1');
     var emailmiss   = document.getElementById('emailmissing');
-    var emailadd       = document.getElementById('hostemail');
+    var emailadd    = document.getElementById('hostemail');
     var password    = document.getElementById('hostpassword');
     var conpass     = document.getElementById('hostconpass');
-    var errorText = document.getElementById('errorMessage');
+    var errorText   = document.getElementById('errorMessage');
 
     conpass.addEventListener('keyup', e=>{
         if(password.value != conpass.value){
@@ -111,7 +111,8 @@
                 dateRegistered: currentDate,
                 photo: null,
                 validated: false,
-                businessPermit: null
+                businessPermit: null,
+                currentPasssword: password.value
             }).then(function(){
                 window.location = 'host/index.html';
             });

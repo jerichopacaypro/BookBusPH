@@ -435,6 +435,9 @@
                 }).then(function(){
                     uploaderDiv.classList.add('hide');
                     updatephotobtn.classList.remove('hide');
+                    photofilebtn.classList.remove('hide');
+                    photouploader.value = 0;
+                    photofilebtn.value = "";
                 });
             });
         });
@@ -480,16 +483,25 @@
     });
 
     changePassesBtn.addEventListener('click', e=>{
-        var user = firebase.auth().currentUser;
-        var newPassword = newPass.value;
-        user.updatePassword(newPassword).then(function() {
-            $(document).ready(function(){
-                $('#updatePasswordModal').modal('open');
-            });
-            newPass.value = "";
-            conNewPass.value = "";
-        }).catch(function(error) {
-          // An error happened.
+        db.collection('buscompany').doc(uid).get().then(function(doc){
+            if(doc.data().currentPassword == currentPass.value){
+                currentPassError.classList.add('hide');
+                var user = firebase.auth().currentUser;
+                var newPassword = newPass.value;
+                cpErrorHide.classList.add('hide');
+                user.updatePassword(newPassword).then(function() {
+                    $(document).ready(function(){
+                        $('#updatePasswordModal').modal('open');
+                    });
+                    newPass.value = "";
+                    conNewPass.value = "";
+                }).catch(function(error) {
+                    cpErrorHide.classList.remove('hide');
+                    printChangePassError.textContent = error.message;
+                });
+            }else{
+                currentPassError.classList.remove('hide');
+            }
         });
     });
     

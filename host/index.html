@@ -259,7 +259,14 @@
                                 <div class="row">
                                     <div class="col s12 m12 l12 left-align">
                                         <h6><b>Reset Password</b></h6>
+                                        <h6 class="center-align red-text hide" id="cpErrorHide"><b id="printChangePassError"></b></h6>
                                         <hr />
+                                    </div>
+                                    <div class="input-field col s12 m12 l12">
+                                        <i class="material-icons prefix">lock</i>
+                                        <input type="password" name="currentPass" id="currentPass" class="validate">
+                                        <label for="currentPass">Current password</label>
+                                        <h6 class="red-text center-align hide" id="currentPassError" style="font-size: small;">Invalid current password!</h6>
                                     </div>
                                     <div class="input-field col s12 m12 l12">
                                         <i class="material-icons prefix">lock_open</i>

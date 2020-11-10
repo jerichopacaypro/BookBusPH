@@ -14,10 +14,15 @@
     firebase.initializeApp(firebaseConfig);
 
     $(document).ready(function(){
+        $('select').formSelect();
         $('.parallax').parallax();
         $('.sidenav').sidenav();
         $('.modal').modal({
             dismissible: false
+        });
+        $('.datepicker').datepicker({
+            yearRange: [1950,2021],
+            container: 'body'
         });
     });
 
