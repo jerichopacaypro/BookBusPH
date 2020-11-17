@@ -36,10 +36,10 @@
         <h2 class="header white-text">BookBusPH</h2>
         <p class="white-text">Welcome! Reserve bus seats online from BookBusPH and get a special discount if you are a student, senior citizen or a person with disabilities. Select a departure and destination city, departure date and the number of seats and click on search. This will show you the necessary details and you can book a seat. Once booked, you will then be asked to pay to complete the reservation.</p>
     </div>
-    <div class="container">
+    <div class="container"> 
         <div class="row">
             <div class="input-field col s12 m3 l3">
-                <select name="from" id="from">
+                <select name="from" id="from" >
                     <option value="" disabled selected>Select</option>
                     <option value="Banaybanay">Banaybanay</option>
                     <option value="Baganga">Baganga</option>
@@ -72,6 +72,7 @@
                     <option value="Tarragona">Tarragona</option>
                 </select>
                 <label for="from" class="white-text">Depart from</label>
+                <h6 class="red-text text-lighten-4 center-align hide" style="font-size: small;" id="errFrom"><p>Field should not be empty!</p></h6>
             </div>
             <div class="input-field col s12 m3 l3">
                 <select name="to" id="to">
@@ -107,14 +108,24 @@
                     <option value="Tarragona">Tarragona</option>
                 </select>
                 <label for="to" class="white-text">Arrive to</label>
+                <h6 class="red-text text-lighten-4 center-align hide" style="font-size: small;" id="errTo"><p>Field should not be empty!</p></h6>
             </div>
             <div class="input-field col s12 m3 l3">
                 <i class="material-icons prefix">event</i>
                 <input type="text" name="bookDate" id="bookDate" class="datepicker">
                 <label for="bookDate">Select Date</label>
+                <h6 class="red-text text-lighten-4 center-align hide" style="font-size: small;" id="errDate"><p>Field should not be empty!</p></h6>
             </div>
             <div class="input-field col s12 m3 l3 center-align">
-                <button class="waves-effect waves-light grey darken-4 btn">Search<i class="material-icons white-text right">search</i></button>
+                <button class="waves-effect waves-light grey darken-4 btn" id="searchBtn">Search<i class="material-icons white-text right">search</i></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <h5 class="red-text center-align hide" id="noResult"><b>Sorry, there are no buses available for this route yet..</b></h5>
+                <ul id="busResults">
+
+                </ul>
             </div>
         </div>
     </div>

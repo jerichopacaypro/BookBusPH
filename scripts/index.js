@@ -48,7 +48,62 @@
     var account2        = document.getElementById('accountbtn2');
     var login1          = document.getElementById('loginbtn1');
     var login2          = document.getElementById('loginbtn2');
+    var placeFrom       = document.getElementById('from');
+    var placeTo         = document.getElementById('to');
+    var bookDate        = document.getElementById('bookDate');
+    var printBus        = document.querySelector('#busResults');
     
+    function renderBuses(doc){
+
+        let li              = document.createElement('li');
+        let divRow          = document.createElement('div');
+        let divLeft         = document.createElement('div');
+        let divRight        = document.createElement('div');
+        let image           = document.createElement('img');
+        let ul              = document.createElement('ul');
+        let liCompany       = document.createElement('li');
+        let liBusPlate      = document.createElement('li');
+        let liBusNum        = document.createElement('li');
+        let liRoute         = document.createElement('li');
+        let liDeparture     = document.createElement('li');
+        let liSeats         = document.createElement('li');
+
+        li.setAttribute('data-id', doc.id);
+        divRow.setAttribute('class', 'row');
+        divLeft.setAttribute('class', 'col s12 m6 l6 right-align');
+        divRight.setAttribute('class', 'col s12 m6 l6 left-align');
+        image.height = '130';
+        image.width = '130';
+        db.collection('buscompany').doc(doc.data().companyId).get().then(function(docs){
+            image.src = docs.data().photo
+        });
+        liCompany.setAttribute('class', 'white-text');
+        liCompany.textContent       = "Company: "+doc.data().busCompany;
+        liBusPlate.setAttribute('class', 'white-text');
+        liBusPlate.textContent      = "Bus Plate: "+doc.data().busPlate;
+        liBusNum.setAttribute('class', 'white-text');
+        liBusNum.textContent        = "Bus Number: "+doc.data().busNumber;
+        liRoute.setAttribute('class', 'white-text');
+        liRoute.textContent         = "Departing from: "+doc.data().routeFrom+" & Arriving To: "+doc.data().routeTo;
+        liDeparture.setAttribute('class', 'white-text');
+        liDeparture.textContent     = "Departure time: "+doc.data().busDepartureTime;
+        liSeats.setAttribute('class', 'white-text');
+        liSeats.textContent         = "Available seats: "+doc.data().seatCapacity;
+
+        li.appendChild(divRow);
+        divRow.appendChild(divLeft);
+        divLeft.appendChild(image);
+        divRow.appendChild(divRight);
+        divRight.appendChild(ul);
+        ul.appendChild(liCompany);
+        ul.appendChild(liBusPlate);
+        ul.appendChild(liBusNum);
+        ul.appendChild(liRoute);
+        ul.appendChild(liDeparture);
+        ul.appendChild(liSeats);
+        printBus.appendChild(li);
+    }
+
     login.addEventListener('click', e=>{
         if(emailaddress.value == "" && password.value != ""){
             eError.classList.remove('hide');
@@ -142,6 +197,52 @@
                 conPass.value = "";
                 regErr.classList.remove('hide');
                 regErr.textContent = error.message;
+            });
+        }
+    });
+
+    searchBtn.addEventListener('click', e=>{
+        if(placeFrom.value == "" && placeTo.value != "" && bookDate.value != ""){
+            errFrom.classList.remove('hide');
+            errTo.classList.add('hide');
+            errDate.classList.add('hide');
+        }else if(placeFrom.value != "" && placeTo.value == "" && bookDate.value != ""){
+            errFrom.classList.add('hide');
+            errTo.classList.remove('hide');
+            errDate.classList.add('hide');
+        }else if(placeFrom.value == "" && placeTo.value == "" && bookDate.value == ""){
+            errFrom.classList.remove('hide');
+            errTo.classList.remove('hide');
+            errDate.classList.remove('hide');
+        }else if(placeFrom.value != "" && placeTo.value != "" && bookDate.value == ""){
+            errFrom.classList.add('hide');
+            errTo.classList.add('hide');
+            errDate.classList.remove('hide');
+        }else if(placeFrom.value == "" && placeTo.value == "" && bookDate.value != ""){
+            errFrom.classList.remove('hide');
+            errTo.classList.remove('hide');
+            errDate.classList.add('hide');
+        }else if(placeFrom.value != "" && placeTo.value == "" && bookDate.value == ""){
+            errFrom.classList.add('hide');
+            errTo.classList.remove('hide');
+            errDate.classList.remove('hide');
+        }else if(placeFrom.value == "" && placeTo.value != "" && bookDate.value == ""){
+            errFrom.classList.remove('hide');
+            errTo.classList.add('hide');
+            errDate.classList.remove('hide');
+        }else{
+            errFrom.classList.add('hide');
+            errTo.classList.add('hide');
+            errDate.classList.add('hide');
+
+            db.collection('bus').where('active', '==', true).where('routeFrom', '==', placeFrom.value).where('routeTo', '==', placeTo.value).get().then(snapshot =>{
+                if(snapshot.empty){
+                    noResult.classList.remove('hide');
+                }
+                snapshot.docs.forEach(doc=>{
+                    noResult.classList.add('hide');
+                    renderBuses(doc);
+                });
             });
         }
     });

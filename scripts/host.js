@@ -21,6 +21,7 @@
         });
         $('.timepicker').timepicker();
         $('.tabs').tabs();
+        $('select').formSelect();
     });
 
     var uid;
