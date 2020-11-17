@@ -12,7 +12,7 @@
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-
+    var d = new Date();
     $(document).ready(function(){
         $('select').formSelect();
         $('.parallax').parallax();
@@ -21,7 +21,7 @@
             dismissible: false
         });
         $('.datepicker').datepicker({
-            yearRange: [1950,2021],
+            yearRange: [1950, d.getFullYear()],
             container: 'body'
         });
     });
@@ -67,28 +67,34 @@
         let liRoute         = document.createElement('li');
         let liDeparture     = document.createElement('li');
         let liSeats         = document.createElement('li');
+        let liButton        = document.createElement('li');
+        let btnDiv          = document.createElement('div');
+        let bookBtn         = document.createElement('button');
 
         li.setAttribute('data-id', doc.id);
         divRow.setAttribute('class', 'row');
-        divLeft.setAttribute('class', 'col s12 m6 l6 right-align');
+        divLeft.setAttribute('class', 'col s12 m6 l6 center-align');
         divRight.setAttribute('class', 'col s12 m6 l6 left-align');
-        image.height = '130';
-        image.width = '130';
+        liCompany.setAttribute('class', 'white-text');
+        liBusPlate.setAttribute('class', 'white-text');
+        liBusNum.setAttribute('class', 'white-text');
+        liRoute.setAttribute('class', 'white-text');
+        liDeparture.setAttribute('class', 'white-text');
+        liSeats.setAttribute('class', 'white-text');
+        btnDiv.setAttribute('class', 'input-field col s12 m12 l12 center-align')
+        bookBtn.setAttribute('class', 'waves-effect waves-light grey darken-4 btn white-text');
         db.collection('buscompany').doc(doc.data().companyId).get().then(function(docs){
             image.src = docs.data().photo
         });
-        liCompany.setAttribute('class', 'white-text');
+        image.height                = '130';
+        image.width                 = '130';
         liCompany.textContent       = "Company: "+doc.data().busCompany;
-        liBusPlate.setAttribute('class', 'white-text');
         liBusPlate.textContent      = "Bus Plate: "+doc.data().busPlate;
-        liBusNum.setAttribute('class', 'white-text');
         liBusNum.textContent        = "Bus Number: "+doc.data().busNumber;
-        liRoute.setAttribute('class', 'white-text');
         liRoute.textContent         = "Departing from: "+doc.data().routeFrom+" & Arriving To: "+doc.data().routeTo;
-        liDeparture.setAttribute('class', 'white-text');
         liDeparture.textContent     = "Departure time: "+doc.data().busDepartureTime;
-        liSeats.setAttribute('class', 'white-text');
         liSeats.textContent         = "Available seats: "+doc.data().seatCapacity;
+        bookBtn.textContent         = "Reserve Seat";
 
         li.appendChild(divRow);
         divRow.appendChild(divLeft);
@@ -101,7 +107,30 @@
         ul.appendChild(liRoute);
         ul.appendChild(liDeparture);
         ul.appendChild(liSeats);
+        ul.appendChild(liButton);
+        liButton.appendChild(btnDiv);
+        btnDiv.appendChild(bookBtn);
         printBus.appendChild(li);
+
+        bookBtn.addEventListener('click', e=>{
+            var user = firebase.auth().currentUser;
+            if (user) {
+                db.collection('bus').doc(doc.id).get().then(function(doc){
+                    comp.textContent = "Bus line: "+doc.data().busCompany;
+                    departFrom.textContent = "Origin: "+doc.data().routeFrom;
+                    arriveTo.textContent = "Destination: "+doc.data().routeTo;
+                    departTime.textContent = "Departure time: "+doc.data().busDepartureTime;
+                    seats.textContent = "Available seats: "+doc.data().seatCapacity;
+                    $(document).ready(function(){
+                        $('#bookModal').modal('open');  
+                    });
+                });
+            } else {
+                $(document).ready(function(){
+                    $("#loginModal").modal('open');
+                });
+            }
+        });
     }
 
     login.addEventListener('click', e=>{
