@@ -75,14 +75,14 @@
         divRow.setAttribute('class', 'row');
         divLeft.setAttribute('class', 'col s12 m6 l6 center-align');
         divRight.setAttribute('class', 'col s12 m6 l6 left-align');
-        liCompany.setAttribute('class', 'white-text');
-        liBusPlate.setAttribute('class', 'white-text');
-        liBusNum.setAttribute('class', 'white-text');
-        liRoute.setAttribute('class', 'white-text');
-        liDeparture.setAttribute('class', 'white-text');
-        liSeats.setAttribute('class', 'white-text');
+        liCompany.setAttribute('class', 'grey-text text-darken-3');
+        liBusPlate.setAttribute('class', 'grey-text text-darken-3');
+        liBusNum.setAttribute('class', 'grey-text text-darken-3');
+        liRoute.setAttribute('class', 'grey-text text-darken-3');
+        liDeparture.setAttribute('class', 'grey-text text-darken-3');
+        liSeats.setAttribute('class', 'grey-text text-darken-3');
         btnDiv.setAttribute('class', 'input-field col s12 m12 l12 center-align')
-        bookBtn.setAttribute('class', 'waves-effect waves-light grey darken-4 btn white-text');
+        bookBtn.setAttribute('class', 'waves-effect waves-light blue btn white-text');
         db.collection('buscompany').doc(doc.data().companyId).get().then(function(docs){
             image.src = docs.data().photo
         });
