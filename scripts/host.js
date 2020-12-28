@@ -42,6 +42,7 @@
     var editbusdiv          = document.getElementById('editbus');
     var profdiv             = document.getElementById('profile');
     var resetdiv            = document.getElementById('resetpass');
+    var paymentdiv          = document.getElementById('payment');
     var dashbtn             = document.getElementById('dashbtn');
     var seatbtn             = document.getElementById('seatbtn');
     var adduserbtn          = document.getElementById('adduserbtn');
@@ -80,6 +81,7 @@
         editbusdiv.classList.add('hide');
         profdiv.classList.add('hide');
         resetdiv.classList.add('hide');
+        paymentdiv.classList.add('hide');
     });
     seatbtn.addEventListener('click', e=>{
         dashdiv.classList.add('hide');
@@ -90,6 +92,7 @@
         editbusdiv.classList.add('hide');
         profdiv.classList.add('hide');
         resetdiv.classList.add('hide');
+        paymentdiv.classList.add('hide');
     });
     adduserbtn.addEventListener('click', e=>{
         dashdiv.classList.add('hide');
@@ -100,6 +103,7 @@
         editbusdiv.classList.add('hide');
         profdiv.classList.add('hide');
         resetdiv.classList.add('hide');
+        paymentdiv.classList.add('hide');
     });
     manageuserbtn.addEventListener('click', e=>{
         dashdiv.classList.add('hide');
@@ -110,6 +114,7 @@
         editbusdiv.classList.add('hide');
         profdiv.classList.add('hide');
         resetdiv.classList.add('hide');
+        paymentdiv.classList.add('hide');
     });
     addbusbtn.addEventListener('click', e=>{
         dashdiv.classList.add('hide');
@@ -120,6 +125,7 @@
         editbusdiv.classList.add('hide');
         profdiv.classList.add('hide');
         resetdiv.classList.add('hide');
+        paymentdiv.classList.add('hide');
     });
     editbusbtn.addEventListener('click', e=>{
         dashdiv.classList.add('hide');
@@ -130,6 +136,7 @@
         editbusdiv.classList.remove('hide');
         profdiv.classList.add('hide');
         resetdiv.classList.add('hide');
+        paymentdiv.classList.add('hide');
     });
     profbtn.addEventListener('click', e=>{
         dashdiv.classList.add('hide');
@@ -140,6 +147,7 @@
         editbusdiv.classList.add('hide');
         profdiv.classList.remove('hide');
         resetdiv.classList.add('hide');
+        paymentdiv.classList.add('hide');
     });
     passbtn.addEventListener('click', e=>{
         dashdiv.classList.add('hide');
@@ -150,6 +158,18 @@
         editbusdiv.classList.add('hide');
         profdiv.classList.add('hide');
         resetdiv.classList.remove('hide');
+        paymentdiv.classList.add('hide');
+    });
+    payBtn.addEventListener('click', e=>{
+        dashdiv.classList.add('hide');
+        resdiv.classList.add('hide');
+        adduserdiv.classList.add('hide');
+        manageuserdiv.classList.add('hide');
+        addbusdiv.classList.add('hide');
+        editbusdiv.classList.add('hide');
+        profdiv.classList.add('hide');
+        resetdiv.classList.add('hide');
+        paymentdiv.classList.remove('hide');
     });
 
     function renderActiveBuses(doc){

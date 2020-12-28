@@ -125,6 +125,9 @@
                         $('#bookModal').modal('open');  
                     });
                 });
+                db.collection('buscompany').doc(doc.data().companyId).get().then(function(doc){
+                    comppic.src = doc.data().photo
+                });
             } else {
                 $(document).ready(function(){
                     $("#loginModal").modal('open');
@@ -267,6 +270,7 @@
             db.collection('bus').where('active', '==', true).where('routeFrom', '==', placeFrom.value).where('routeTo', '==', placeTo.value).get().then(snapshot =>{
                 if(snapshot.empty){
                     noResult.classList.remove('hide');
+                    busResults.innerHTML = "";
                 }
                 snapshot.docs.forEach(doc=>{
                     noResult.classList.add('hide');
@@ -292,6 +296,8 @@
                         account2.classList.remove('hide');
                         login1.classList.add('hide');
                         login2.classList.add('hide');
+                        footbus.classList.add('hide');
+                        footprofile.classList.remove('hide');
                         $(document).ready(function(){
                             $('#loadModal').modal('close');
                         });
@@ -307,6 +313,8 @@
             account2.classList.add('hide');
             login1.classList.remove('hide');
             login2.classList.remove('hide');
+            footbus.classList.remove('hide');
+            footprofile.classList.add('hide');
         }
     });
 })();
